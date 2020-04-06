@@ -20,6 +20,7 @@ piece_color_map = {
 
 resize_multiplier = 50
 
+
 class PuzzlePiece(object):
 
     def __init__(self, identifier, piece_dimensions, piece_definition):
@@ -30,19 +31,19 @@ class PuzzlePiece(object):
         self.identifier = identifier
 
     def draw(self):
-        image = numpy.zeros((self.piece_dimensions[0] * resize_multiplier, self.piece_dimensions[1] * resize_multiplier, 3), numpy.uint8)
+        image = numpy.zeros(
+            (self.piece_dimensions[0] * resize_multiplier, self.piece_dimensions[1] * resize_multiplier, 3),
+            numpy.uint8)
 
         img2 = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         cv2.imshow('test', img2)
         cv2.waitKey(250)
 
 
-
 pieces = {}
 p = PuzzlePiece('A', (2, 3), ((1, 1), (1, 0), (1, 1)))
 p.draw()
 pieces[p.identifier] = p
-
 
 game_width = 11
 game_height = 5
@@ -51,9 +52,10 @@ height = game_height * resize_multiplier
 width = game_width * resize_multiplier
 
 lines = []
-with open("level6-11.txt") as textFile:
+with open("1.txt") as textFile:
     lines = [line.split() for line in textFile]
     print(lines)
+
 
 def draw_rect(x, y, resize_multiplier, color, img):
     start_point = (x, y)
